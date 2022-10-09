@@ -1,11 +1,19 @@
-﻿@model List<AutoMarket.Domain.Entity.Car> 
+﻿@model IEnumerable<AutoMarket.Domain.Entity.Car> 
 
+@if (@Model != null)
+{
+	@foreach (var car in Model)
+	{
 
-@foreach(var car in Model){
+						<p>@car.Name</p>
+						<p>@car.Price</p>
+						<p>@car.DateCreate</p>
+						<p>@car.TypeCar</p>
+						<p>@car.Description</p>
+	}
+}
+else
+{
+				<h1>Найдено 0 элементов</h1>
 
-<p>@car.Name</p>
-<p>@car.Price</p>
-<p>@car.DateCreate</p>
-<p>@car.TypeCar</p>
-<p>@car.Description</p>
 }

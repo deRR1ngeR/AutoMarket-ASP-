@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMarket.Service.Intrefaces;
+using AutoMarket.Service.Implementations;
 
 namespace AutoMarket
 {
@@ -31,8 +33,8 @@ namespace AutoMarket
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(connection));
-      
-            services.AddScoped<ICarRepository, CarRepository>();  
+            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<ICarService, CarService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
