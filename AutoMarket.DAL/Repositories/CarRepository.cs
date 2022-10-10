@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AutoMarket.DAL.Interfaces;
 using AutoMarket.Domain.Entity;
+using AutoMarket.Domain.ViewModel.Car;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -48,6 +49,14 @@ namespace AutoMarket.DAL.Repositories
         public async Task<List<Car>> Select()
         {
             return await db.Car.ToListAsync();
+        }
+
+        public async Task<Car> Update(Car entity)
+        {
+            db.Update(entity);
+            await db.SaveChangesAsync();
+            return entity;
+
         }
     }
 }
